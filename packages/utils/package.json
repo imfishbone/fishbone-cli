@@ -1,6 +1,6 @@
 {
   "name": "@fishbone-cli/utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "the fishbone-cli/utils",
   "author": "imfishbone <imfishbone@163.com>",
   "homepage": "",
@@ -18,6 +18,5 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from utils\""
-  },
-  "dependencies": {}
+  }
 }
