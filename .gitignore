@@ -2,6 +2,6 @@
 .idea
 node_modules
 packages/**/node_modules
-#packages/**/package-lock.json
-package-lock.json
+# packages/**/package-lock.json
+# package-lock.json
 lerna-debug.log

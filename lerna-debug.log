@@ -1,19 +1,11 @@
-0 silly argv {
-0 silly argv   _: [ 'create' ],
-0 silly argv   lernaVersion: '4.0.0',
-0 silly argv   '$0': 'lerna',
-0 silly argv   name: '@fishbone-cli/test'
-0 silly argv }
-1 notice cli v4.0.0
-2 verbose rootPath /Users/ZDGF/Work/github/fishbone-cli
-3 warn ENOREMOTE No git remote found, skipping repository property
-4 error Error: canceled
-4 error     at Interface.<anonymous> (/Users/ZDGF/Work/github/fishbone-cli/node_modules/read/lib/read.js:66:13)
-4 error     at Interface.emit (events.js:375:28)
-4 error     at Interface._ttyWrite (readline.js:910:16)
-4 error     at ReadStream.onkeypress (readline.js:235:10)
-4 error     at ReadStream.emit (events.js:375:28)
-4 error     at emitKeys (internal/readline/utils.js:358:14)
-4 error     at emitKeys.next (<anonymous>)
-4 error     at ReadStream.onData (readline.js:1179:36)
-4 error     at ReadStream.emit (events.js:375:28)
+31 error Error: Command failed with exit code 1: git add -- packages/utils/package.json packages/utils/package-lock.json packages/core/package.json packages/core/package-lock.json lerna.json
+31 error The following paths are ignored by one of your .gitignore files:
+31 error packages/core/package-lock.json
+31 error packages/utils/package-lock.json
+31 error hint: Use -f if you really want to add them.
+31 error hint: Turn this message off by running
+31 error hint: "git config advice.addIgnoredFile false"
+31 error     at makeError (/Users/ZDGF/Work/github/fishbone-cli/node_modules/execa/lib/error.js:60:11)
+31 error     at handlePromise (/Users/ZDGF/Work/github/fishbone-cli/node_modules/execa/index.js:118:26)
+31 error     at processTicksAndRejections (internal/process/task_queues.js:95:5)
+31 error     at async Promise.all (index 0)
