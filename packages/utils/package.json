@@ -1,6 +1,6 @@
 {
   "name": "@fishbone-cli/utils",
-  "version": "1.0.4",
+  "version": "1.0.0",
   "description": "the fishbone-cli/utils",
   "author": "imfishbone <imfishbone@163.com>",
   "homepage": "",
@@ -19,5 +19,5 @@
   "scripts": {
     "test": "echo \"Error: run tests from utils\""
   },
-  "gitHead": "2ac8a45b1c68d8613387836af4beae2c39fa3a2c"
+  "gitHead": "95b422fab399724f4c3aef0951acafe34c03764f"
 }

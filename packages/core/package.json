@@ -1,6 +1,6 @@
 {
   "name": "@fishbone-cli/core",
-  "version": "1.0.4",
+  "version": "1.0.0",
   "description": "the fishbone-cli/core",
   "keywords": [
     "fishbone-cli"
@@ -22,5 +22,5 @@
   "dependencies": {
     "@fishbone-cli/utils": "^1.0.4"
   },
-  "gitHead": "2ac8a45b1c68d8613387836af4beae2c39fa3a2c"
+  "gitHead": "95b422fab399724f4c3aef0951acafe34c03764f"
 }
