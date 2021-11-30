@@ -1,6 +1,6 @@
 {
   "name": "@fishbone-cli/core",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "the fishbone-cli/core",
   "keywords": [
     "fishbone-cli"
@@ -20,6 +20,6 @@
     "test": "echo \"Error: run tests from core\""
   },
   "dependencies": {
-    "@fishbone-cli/utils": "^1.0.2"
+    "@fishbone-cli/utils": "^1.0.3"
   }
 }
