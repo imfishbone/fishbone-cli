@@ -8,7 +8,10 @@
   "author": "imfishbone <imfishbone@163.com>",
   "homepage": "",
   "license": "ISC",
-  "main": "lib/core.js",
+  "main": "",
+  "bin": {
+    "fishbone-cli": "bin/index.js"
+  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -20,7 +23,9 @@
     "test": "echo \"Error: run tests from core\""
   },
   "dependencies": {
-    "@fishbone-cli/utils": "^1.0.6"
+    "@fishbone-cli/utils": "file:../../utils/utils",
+    "import-local": "^3.1.0",
+    "npmlog": "^6.0.0"
   },
   "gitHead": "5b3c50a3d0613348b34a8f8fdeef83afe540a391",
   "publishConfig": {
