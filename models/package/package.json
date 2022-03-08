@@ -1,0 +1,37 @@
+{
+  "name": "@fishbone-cli/package",
+  "version": "1.0.0",
+  "description": "fishbone-cli npm modles",
+  "author": "imfishbone <imfishbone@163.com>",
+  "homepage": "https://github.com/imfishbone/fishbone-cli#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imfishbone/fishbone-cli.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/imfishbone/fishbone-cli/issues"
+  },
+  "dependencies": {
+    "@fishbone-cli/format-path": "file:../../utils/format-path",
+    "@fishbone-cli/get-npm-info": "file:../../utils/get-npm-info",
+    "@fishbone-cli/utils": "file:../../utils/utils",
+    "npminstall": "^5.5.0",
+    "path-exists": "^4.0.0",
+    "pkg-dir": "^5.0.0"
+  }
+}
