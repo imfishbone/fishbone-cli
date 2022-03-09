@@ -1,7 +1,7 @@
 {
-  "name": "@fishbone-cli/package",
+  "name": "@fishbone-cli/init",
   "version": "1.0.0",
-  "description": "fishbone-cli npm modles",
+  "description": "> TODO: description",
   "author": "imfishbone <imfishbone@163.com>",
   "homepage": "https://github.com/imfishbone/fishbone-cli#readme",
   "license": "ISC",
@@ -25,14 +25,5 @@
   },
   "bugs": {
     "url": "https://github.com/imfishbone/fishbone-cli/issues"
-  },
-  "dependencies": {
-    "@fishbone-cli/format-path": "file:../../utils/format-path",
-    "@fishbone-cli/get-npm-info": "file:../../utils/get-npm-info",
-    "@fishbone-cli/utils": "file:../../utils/utils",
-    "fs-extra": "^10.0.1",
-    "npminstall": "^5.5.0",
-    "path-exists": "^4.0.0",
-    "pkg-dir": "^5.0.0"
   }
 }

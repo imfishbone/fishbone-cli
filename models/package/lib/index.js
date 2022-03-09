@@ -4,6 +4,7 @@ const path = require('path');
 const pkgDir = require('pkg-dir').sync;
 const pathExists = require('path-exists').sync;
 const npminstall = require('npminstall');
+const fse = require('fs-extra');
 const { isObject } = require('@fishbone-cli/utils');
 const formatPath = require('@fishbone-cli/format-path');
 const { getDefaultRegistry, getNpmLatestVersion } = require('@fishbone-cli/get-npm-info');
@@ -30,16 +31,23 @@ class Package {
   }
   
   async prepare() {
+    if (this.storeDir && !pathExists(this.storeDir)) {
+      fse.mkdirsSync(this.storeDir);
+    }
     if (this.packageVersion === 'latest') {
       this.packageVersion = await getNpmLatestVersion(this.packageName);
     }
-    console.log(this.packageVersion);
+    // console.log(this.packageVersion);
   }
   
   //_@imooc-cli_init@1.1.3@@imooc-cli 
   // @imooc-cli_init 1.1.2
   get cacheFilePath() {
     return path.resolve(this.storeDir, `_${this.cacheFilePathPrefix}@${this.packageVersion}@${this.packageName}`);
+  }
+  
+  getSpecificCacheFilePath(version) {
+    return path.resolve(this.storeDir, `_${this.cacheFilePathPrefix}@${version}@${this.packageName}`);
   }
 
   // 判断当前 Package 是否存在
@@ -62,26 +70,51 @@ class Package {
         { name: this.packageName, version: this.packageVersion },
       ],
       registry: getDefaultRegistry(),
-    })
+    });
   }
 
   // 更新 Package
-  update() {}
+  async update() {
+    await this.prepare();
+    // 1. 获取最新 npm 模块版本号
+    const latestPackageVersion = await getNpmLatestVersion(this.packageName);
+    // 2. 查询最新版本号对应的路径是否存在
+    const latestFilePath = this.getSpecificCacheFilePath(latestPackageVersion);
+    // 3. 如果不存在，则直接安装最新版本
+    if (!pathExists(latestFilePath)) {
+      await npminstall({
+        root: this.targetPath,
+        storeDir: this.storeDir,
+        pkgs: [
+          { name: this.packageName, version: latestPackageVersion },
+        ],
+        registry: getDefaultRegistry(),
+      });
+      this.packageVersion = latestPackageVersion;
+    }
+  }
 
   // 获取入口文件
   getRootFilePath() {
-    // 1. 获取 package.json 所在的路径
-    const dir = pkgDir(this.targetPath);
-    if (dir) {
-      // 2. 读取 package.json
-      // 3. 寻找 main/lib
-      const pkgjsonFile = require(path.resolve(dir, 'package.json'));
-      if (pkgjsonFile && pkgjsonFile.main) {
-        // 4. 处理路径的兼容 macOS Win32
-        return formatPath(path.resolve(dir, pkgjsonFile.main));
+    const _getRootFile = function (targetPath) {
+      // 1. 获取 package.json 所在的路径
+      const dir = pkgDir(targetPath);
+      if (dir) {
+        // 2. 读取 package.json
+        // 3. 寻找 main/lib
+        const pkgjsonFile = require(path.resolve(dir, 'package.json'));
+        if (pkgjsonFile && pkgjsonFile.main) {
+          // 4. 处理路径的兼容 macOS Win32
+          return formatPath(path.resolve(dir, pkgjsonFile.main));
+        }
       }
+      return null;
     }
-    return null;
+    if (this.storeDir) {
+     return _getRootFile(this.cacheFilePath);
+    } else {
+     return _getRootFile(this.targetPath);
+    }
   }
 }
 
